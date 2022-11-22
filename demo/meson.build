@@ -11,10 +11,12 @@ test_exe = executable(
 	include_directories: incdirs,
 )
 
-test(
-	'test',
-	test_exe,
-)
+if not meson.is_subproject()
+	test(
+		'test',
+		test_exe,
+	)
+endif
 
 timing_exe = executable(
 	'timing',
